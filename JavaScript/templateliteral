@@ -1,1 +1,31 @@
 
+function postGreeting(fullname,address){
+	let currentDate = new Date();
+	let currentHour = currentDate.getHours();
+	let message = currentDate<12?"Good Morning":currentDate<16?"Good Afternoon":"Good Evening";
+	console.log('${message}! ${fullname}, ${address}. Welcome to Template Literals.');
+	console.log("${message}! ${fullname}, ${address}. Welcome to Template Literals.");
+	console.log(`${message}! ${fullname}, ${address}. Welcome to Template Literals.`);
+}
+postGreeting("James Bond","Bangalore");
+
+function postGreeting(template,arg){
+    console.log(template);
+        //output:- (2) ["Hello, ", ".", raw: Array(2)]
+    console.log(arg);
+        //output:- 20
+    return `${template[0]}${arg<12?"Good Morning":arg<17?"Good Afternoon":"Good Evening"}${template[1]}`;
+}
+console.log(postGreeting`Hello, ${new Date().getHours()}.`);
+//output:- Hello, Good Evening.
+
+
+console.log(`Hello,${new Date().getHours()<12?"Good Morning":new Date().getHours()<17?"Good Afternoon":"Good Evening"}.`);
+//output:- Hello,Good Evening.
+
+
+String.raw`Addtion of 1 plus 2 is \n ${1+2}`;
+   output:- "Addtion of 1 plus 2 is \n 3"
+`Addtion of 1 plus 2 is \n ${1+2}`;
+   output:- "Addtion of 1 plus 2 is 
+             3"
