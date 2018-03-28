@@ -1,1 +1,50 @@
 
+package demo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Alpha {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		List<Integer> productList = new ArrayList<Integer>();
+		productList.add(1000);
+		productList.add(2000);
+		productList.add(3000);
+		productList.add(4000);
+		productList.add(5000);
+		
+		List productList1 = new ArrayList();
+		for (Object object : productList) {
+			int value = (int)object;
+			if (value<3000)
+				productList1.add(value);
+		}
+		//System.out.println(productList1.toString());
+		
+
+		//List finallist = productList.stream().filter(p->p>3000).collect(Collectors.toList());
+		
+		//Integer finallist = productList.stream().filter(p->p<3000).reduce(2,(a,b)->a*b);
+		
+		List finallist = productList.stream().filter(p->{
+			System.out.println(p); 
+			return p>3000;
+			}).collect(Collectors.toList());
+		System.out.println(finallist.toString());
+		
+		/*boolean gotIt = false;
+		productList.forEach((v)->{
+			if (v==1000){
+				//gotIt=true;
+			}
+
+			System.out.println(v);
+		});
+		System.out.println(gotIt);*/
+	}
+	
+
+}
