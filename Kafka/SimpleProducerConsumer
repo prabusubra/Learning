@@ -1,0 +1,122 @@
+
+package learningkafka;
+
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+public class SimpleProducer {
+
+	public static void main(String[] args) {
+		
+	    Properties props = new Properties();
+		props.put("bootstrap.servers", "localhost:9092");
+		props.put("acks", "all");
+		props.put("retries", 0);
+		props.put("batch.size", 16384);
+		props.put("linger.ms", 1);
+		props.put("buffer.memory", 33554432);
+		props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+		props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+		KafkaProducer<String, String> producer = new KafkaProducer<String,String>(props);
+		producer.send(new ProducerRecord<String, String>("Rajinikanth2",2,"DailyMsg","Hello Fans!!!"));
+		producer.close();
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+
+package learningkafka;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.Properties;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+
+public class SimpleConsumer {
+
+	public static void main(String[] args) throws Exception {
+		 PrintStream printstream = new PrintStream(new File("C:\\Prabu\\Reactive\\logs.txt")); 
+	     Executor exec = Executors.newSingleThreadExecutor();
+	     Properties props = new Properties();
+	      props.put("bootstrap.servers", "localhost:9092");
+	      props.put("group.id", "FirstConsumer");
+	      props.put("enable.auto.commit", "true");
+	      props.put("auto.commit.interval.ms", "1000");
+	      props.put("session.timeout.ms", "30000");
+	      props.put("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+	      props.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");
+	      KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
+	     exec.execute(()->{
+			      consumer.subscribe(Arrays.asList("Rajinikanth2"));
+			      int i = 0;
+			      String msg = "";
+			      try {
+					while (true) {
+						consumer.poll(Long.MAX_VALUE).forEach((record)->{
+							printstream.print(record.toString());
+					    	 printstream.print(record.key()+" -->> "+record.value());
+						});
+					     
+					           
+					  }
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}finally {
+					printstream.flush();
+					printstream.close();
+				}
+	 	     });
+
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.learning.kafka</groupId>
+  <artifactId>learningkafka</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.2.RELEASE</version>
+</parent>
+<dependencies>
+    <dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+</dependencies>
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+		</plugin>
+	</plugins>
+</build>
+<properties>  
+    <java.version>1.8</java.version>
+</properties> 
+  
+</project>
