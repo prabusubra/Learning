@@ -1,0 +1,82 @@
+I am trying to write Spring boot applications as a simple reactive Kafka producer and consumer using @EnableKafka and @KafkaListener annotations.
+i have configured my kafka brokers are on different machine. when i give bootstrap-server to advertised host of kafka brokers, it is always overriding  advertised host ip addresses to localhost. below are my code.
+
+pom.xml file:-
+
+    <dependency>
+    	<groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework.kafka</groupId>
+    	<artifactId>spring-kafka</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.projectreactor.kafka</groupId>
+        <artifactId>reactor-kafka</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </dependency>
+
+config:- 
+
+    @Configuration
+    @EnableKafka
+    public class AppConfig {
+    		
+    	@Bean
+    	Map consumerProps() {
+    		Map<String, Object> props = new HashMap<>();
+    		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.12.12.24:9092,192.14.14.28:9092");
+    		props.put(ConsumerConfig.GROUP_ID_CONFIG, "example-group");
+    		props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+    		props.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "100");
+    		props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "15000");
+    		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+    		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringDeserializer.class);
+    		props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+    		return props;
+    	}
+    	
+    	@Bean
+    	ReceiverOptions receiverOptions() {
+    		
+    		ReceiverOptions receiverOptions = ReceiverOptions.create(consumerProps()).subscription(Arrays.asList("hellochange"));
+    
+    		return receiverOptions;
+    	}
+    	
+    	@Bean
+    	public KafkaReceiver kafkaReceiver() {
+    		return KafkaReceiver.create(receiverOptions());
+    	}
+    	
+    }
+Consumer:-
+
+    @Service
+    public class ChangeListener {
+    	
+    	@Autowired
+    	KafkaReceiver kafkaReceiver;
+    	
+    	@KafkaListener(topics="hellochange",groupId="example-group")
+    	public void receiver() {
+    		kafkaReceiver.receive().subscribe(System.out::println);
+    	}
+    	
+    }
+Console:-
+  
+     auto.commit.interval.ms = 5000
+    	auto.offset.reset = latest
+    	bootstrap.servers = [localhost:9092]
+    	check.crcs = true
+    	client.id = 
+    	connections.max.idle.ms = 540000
+    	enable.auto.commit = true
+    2018-06-07 19:59:17.640  WARN 23536 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-1, groupId=example-group] Connection to node -1 could not be established. Broker may not be available.
+
+I have validated without spring configurations in a simple class and non-reactive Spring kafka, for both, it is working fine. only Reactor kafka with EnableKafka and KafkaListener annotations i am getting this problem.
+
+am i missing something/ doing wrong here ? 
+can we use EnableKafka and KafkaListener annotations with Reactor Kafka in Spring boot? 
