@@ -35,15 +35,14 @@ public class StandaloneListener {
 	}
 	
 	public static void main(String[] args) {
-		StandaloneListener listener = new StandaloneListener();
-		KafkaReceiver kafkaReceiver = listener.getConfigureListener();
-		 Flux<ReceiverRecord<String, String>> kafkaFlux  = kafkaReceiver.receive();
-		 kafkaFlux.subscribe((data)->{
-			 ConsumerRecord crecord = (ConsumerRecord)data;
-			 if (crecord.value() != null) {
-				 System.out.println(crecord);
-			 }
-		 });
-	}
+		new StandaloneListener()
+			.getConfigureListener()
+			.receive().subscribe((data)->{
+			        ConsumerRecord crecord = (ConsumerRecord)data;
+			        if (crecord.value() != null) {
+				      System.out.println(crecord);
+			        }
+		         });
+	        }
 
-}
+          }
