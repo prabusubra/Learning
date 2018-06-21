@@ -70,8 +70,6 @@ public class RX1 {
 				System.out.println("Received by Subscriber :: "+data.a);
 			});*/
 		});
-		
-		Thread.sleep(50000);
 			
 	}
 
