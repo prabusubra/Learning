@@ -1,4 +1,9 @@
 minikube start
+
+kubectl config view
+
+https://192.168.99.100:30000
+
 kubectl run kube4cass --image=cassandra --port=9042
 kubectl expose deployment kube4cass --type=NodePort
 
