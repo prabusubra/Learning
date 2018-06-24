@@ -1,0 +1,30 @@
+appVersion: v1
+kind: Deployment
+spec:
+ replicas: 1
+ template:
+  metadata:
+   name: kube4companymicroservice
+   labels:
+     app: kube4cass
+  spec:
+   containers:
+    - name: kube4cassandra
+      image: cassandra
+      ports:
+       - containerPort: 9042
+    - name: kube4companyms
+      image: companymsv1:v1
+      ports:
+       - containerPort: 8080
+Kind: service
+metadata:
+   name: companymsservice
+spec:
+ selector:
+  app: mykube4companyms
+  ports:
+  - name: http
+  - protocol: TCP
+    port: 8080
+    targetPort: 9376       
