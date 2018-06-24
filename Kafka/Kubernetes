@@ -1,6 +1,6 @@
 minikube start
 kubectl run kube4cass --image=cassandra --port=9042
-kubectl expose deployment kube4cass --type=NodePort --port=9042
+kubectl expose deployment kube4cass --type=NodePort
 
 kubectl run kube4companyms --image prabusubra/companyms --port=8080
 kubectl expose deployment kube4companyms --type=NodePort
