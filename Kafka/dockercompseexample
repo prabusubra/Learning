@@ -1,0 +1,28 @@
+version: '3'
+services:
+  cassandradb:
+    image: cassandra
+    restart: always
+    container_name: cassandracontainer
+    networks:
+      mylocalhost:
+        ipv4_address: 172.10.0.2
+  companyms:
+    build: .
+    depends_on:
+    - cassandradb
+    ports:
+    - 8080:8080
+    restart: on-failure
+    container_name: concompanyms
+    networks:
+    - mylocalhost
+    links:
+    - cassandradb
+networks:
+  mylocalhost:
+    driver: bridge
+    ipam:
+     driver: default
+     config:
+     - subnet: 172.10.0.2/16
