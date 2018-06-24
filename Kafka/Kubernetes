@@ -7,4 +7,6 @@ kubectl expose deployment kube4companyms --type=NodePort
 
 minikube service kube4companyms --url
 
+minikube docker-env
 eval $(minikube docker-env)
+docker build -t companymsv1:v1 prabu/eclipse-workspace/company
