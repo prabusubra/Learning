@@ -15,3 +15,28 @@ minikube service kube4companyms --url
 minikube docker-env
 eval $(minikube docker-env)
 docker build -t companymsv1:v1 prabu/eclipse-workspace/company
+
+
+
+-----------------------------------------------------------------------------------
+
+prabus-mbp:~ prabusubra$ kubectl config view
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /Users/prabusubra/.minikube/ca.crt
+    server: https://192.168.99.100:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /Users/prabusubra/.minikube/client.crt
+    client-key: /Users/prabusubra/.minikube/client.key
