@@ -1,0 +1,15 @@
+companyId;
+	companyName;
+	address;
+	stockprice;
+	ceo;
+	founded;
+	headquarters;
+	revenue;
+	website;
+	subsidiaries;
+	noofemployees;
+	private List<String> certifiedby;
+	private List<String> employeeList;
+	supplierList;
+	customerList;
