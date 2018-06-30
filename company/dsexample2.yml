@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  companyms:
+    build: companyms
+    image: companyms:v3
+    ports:
+    - 8080:8080
+    networks:
+    - mylocalhost
+    links:
+    - cassandradb
+networks:
+  mylocalhost:

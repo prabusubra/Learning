@@ -8,7 +8,7 @@ services:
       mylocalhost:
         ipv4_address: 172.10.0.2
   companyms:
-    build: .
+    image: companyms:v3
     depends_on:
     - cassandradb
     ports:

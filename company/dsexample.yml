@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  cassandradb:
+    image: cassandra
+    networks:
+      mylocalhost:
+        ipv4_address: 172.10.0.2
+networks:
+  mylocalhost:
+    driver: overlay
+    ipam:
+     driver: default
+     config:
+     - subnet: 172.10.0.2/16
