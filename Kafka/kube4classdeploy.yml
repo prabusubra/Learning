@@ -1,0 +1,78 @@
+#------------------- cassandra Deployment --------------- #
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cassandradb
+  labels:
+    app: cassandradb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cassandradb
+  template:
+    metadata:
+      labels:
+        app: cassandradb
+    spec:
+      containers:
+      - image: cassandra
+        name: cassandradb
+        ports:
+        - containerPort: 9047
+
+---
+#--------------------------------- cassandra Service -------- #
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: cassandradb
+spec:
+ ports:
+  - port: 9042
+    targetPort: 9042
+ selector:
+  app: cassandradb
+ type: NodePort
+
+---
+#------------------- Company MS Deployment --------------- #
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: companyms
+  labels:
+    app: companyms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: companyms
+  template:
+    metadata:
+      labels:
+        app: companyms
+    spec:
+      containers:
+      - image: companyms:v4
+        name: companyms
+        ports:
+        - containerPort: 9047
+
+---
+#--------------------------------- Company MS Service -------- #
+
+apiVersion: v1
+kind: Service
+metadata:
+ name: companyms
+spec:
+ ports:
+  - port: 8080
+    targetPort: 8080
+ selector:
+  app: companyms
+ type: NodePort
