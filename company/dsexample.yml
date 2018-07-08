@@ -9,6 +9,6 @@ networks:
   mylocalhost:
     driver: overlay
     ipam:
-     driver: default
-     config:
-     - subnet: 172.10.0.2/16
+      driver: default
+      config:
+      - subnet: 172.10.0.2/16

@@ -31,7 +31,11 @@ public class CompanyConfig extends AbstractReactiveCassandraConfiguration{
 	
 	@Override
 	protected String getContactPoints() {
+		System.out.println("------------------------------------------");
+		System.out.println(System.getenv());
+		System.out.println("-----------------------------------------");
 		return contactpoint;
+		//return System.getenv("CASSANDRADB_SERVICE_HOST");
 	}
 	
 	@Override

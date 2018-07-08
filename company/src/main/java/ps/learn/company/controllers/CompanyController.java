@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ps.learn.company.backend.CustomRepository;
 import ps.learn.company.domain.Company;
 import ps.learn.company.services.CompanyServices;
 import reactor.core.publisher.Flux;
@@ -20,6 +21,13 @@ import reactor.core.publisher.Mono;
 public class CompanyController {
 	
 	@Autowired CompanyServices companyServices;
+	@Autowired CustomRepository customRepository;
+	
+	@PostMapping(value="/{msName}")
+	public Flux<Object> letsAdd(@PathVariable("msName") String msName, @RequestBody Flux<Object> data){
+		return customRepository.add(data, msName);
+		
+	}
 	
 	@GetMapping
 	public Flux<Company> getAllCompany(){
