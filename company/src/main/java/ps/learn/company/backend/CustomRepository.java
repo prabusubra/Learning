@@ -19,6 +19,7 @@ public class CustomRepository {
 			ObjectMapper mapper = new ObjectMapper();
 			String input;
 			try {
+				
 				input = mapper.writeValueAsString(d);
 				System.out.println(" --------- "+input+" ----------- ");
 				String query= "INSERT INTO "+msName+" JSON " +d;

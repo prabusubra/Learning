@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,6 +54,13 @@ public class CompanyController {
 	public Mono<Void> deleteById(String companyid){
 		return companyServices.deleteById(companyid);
 	}
+	
+	@PostMapping(value="/custom")
+	public Flux<Company> addCompany(@RequestBody Flux<Company> data, @RequestHeader("Content-Type") String contenttype ){
+		System.out.println(" content type --> "+contenttype);
+		return Flux.empty();
+	}
+	
 	
 	@GetMapping("/hello")
 	public String letsSayHello() {

@@ -55,9 +55,10 @@ public class CompanyConfig extends AbstractReactiveCassandraConfiguration{
 	@Override
 	protected List<String> getStartupScripts() {
 		String cqlscript1 = "CREATE TABLE IF NOT EXISTS "+keyspace+".company ("
-				+ "companyid text PRIMARY KEY,"
-				+ "companyname text,"
-				+ "employee list<text>"
+				+ "companyid TEXT PRIMARY KEY,"
+				+ "companyname TEXT,"
+				+ "employee LIST<TEXT>,"
+				+ "schemainfo MAP<TEXT,TEXT>"
 				+ ");";
 		
 		String cqlscript2 = "CREATE INDEX IF NOT EXISTS icompanyname on "+keyspace+".company ("
