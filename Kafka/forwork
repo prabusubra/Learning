@@ -1,0 +1,17 @@
+[
+    {
+        "templateid": "user",
+        "templatename": "user",
+        "templatedata": "{\"type\":\"object\",\"properties\": { \"userid\": {\"type\": \"string\",\"primarykey\":\"TRUE\"},\"firstname\": {\"type\":\"string\" },\"lastname\": {\"type\": \"string\" },\"gender\": {\"type\": \"string\"},\"emailid\": {\"type\":\"string\"},\"phoneNumber\": {\"type\": \"string\" },\"skillsets\": {\"type\": \"list\"},\"employer\": {\"type\": \"string\" },\"alumniof\": {\"type\": \"list\" },\"address\": {\"type\": \"string\" }}}"
+    },
+    {
+        "templateid": "company",
+        "templatename": "company",
+        "templatedata": "{\"type\":\"object\",\"properties\": { \"companyId\": {\"type\": \"string\",\"primarykey\":\"TRUE\"},\"companyName\": {\"type\":\"string\" },\"address\": {\"type\": \"string\" },\"stockprice\": {\"type\": \"string\"},\"ceo\": {\"type\":\"string\"},\"founded\": {\"type\": \"string\" },\"headquarters\": {\"type\": \"string\"},\"website\": {\"type\": \"string\" },\"subsidiaries\": {\"type\": \"string\" },\"noofemployees\": {\"type\": \"string\" }}}"
+    },
+    {
+        "templateid": "certificate",
+        "templatename": "certificate",
+        "templatedata": "{\"type\":\"object\",\"properties\": { \"certificateId\": {\"type\": \"string\",\"primarykey\":\"TRUE\"},\"certificateName\": {\"type\":\"string\" },\"issuedTo\": {\"type\": \"string\" },\"issuedBy\": {\"type\": \"string\"},\"issuedFor\": {\"type\":\"string\"},\"issuedDate\": {\"type\": \"string\" },\"certificateLevel\": {\"type\": \"string\"},\"expiryDate\": {\"type\": \"string\" },\"validatedBy\": {\"type\": \"string\" }}}"
+    }
+]

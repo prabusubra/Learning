@@ -1,0 +1,50 @@
+companyId;
+	companyName;
+	address;
+	stockprice;
+	ceo;
+	founded;
+	headquarters;
+	revenue;
+	website;
+	subsidiaries;
+	noofemployees;
+	private List<String> certifiedby;
+	private List<String> employeeList;
+	supplierList;
+	customerList;
+	String jsondata = "{\r\n" + 
+				"  \"type\":\"object\",\r\n" + 
+				"  \"properties\": {\r\n" + 
+				"    \"userid\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    },\r\n" + 
+				"    \"firstname\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    },\r\n" + 
+				"    \"lastname\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    },\r\n" + 
+				"    \"gender\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    },\r\n" + 
+				"    \"emailid\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    },\r\n" + 
+				"    \"phoneNumber\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    },\r\n" + 
+				"    \"skillsets\": {\r\n" + 
+				"      \"type\": \"java.util.List\"\r\n" + 
+				"    },\r\n" + 
+				"    \"employer\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    },\r\n" + 
+				"    \"alumniof\": {\r\n" + 
+				"      \"type\": \"java.util.List\"\r\n" + 
+				"    },\r\n" + 
+				"    \"address\": {\r\n" + 
+				"      \"type\": \"string\"\r\n" + 
+				"    }\r\n" + 
+				"  }\r\n" + 
+				"}";
