@@ -24,7 +24,7 @@ public class CompanyController {
 	@Autowired CompanyServices companyServices;
 	@Autowired CustomRepository customRepository;
 	
-	@PostMapping(value="/{msName}")
+	//@PostMapping(value="/{msName}")
 	public Flux<Object> letsAdd(@PathVariable("msName") String msName, @RequestBody Flux<Object> data){
 		return customRepository.add(data, msName);
 		
@@ -55,8 +55,8 @@ public class CompanyController {
 		return companyServices.deleteById(companyid);
 	}
 	
-	@PostMapping(value="/custom")
-	public Flux<Company> addCompany(@RequestBody Flux<Company> data, @RequestHeader("Content-Type") String contenttype ){
+	@PostMapping(value="/custom", consumes= {"application/template"})
+	public Flux<?> addCompany(@RequestBody Flux<Company> data, @RequestHeader("Content-Type") String contenttype ){
 		System.out.println(" content type --> "+contenttype);
 		return Flux.empty();
 	}
