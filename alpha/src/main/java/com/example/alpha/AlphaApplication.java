@@ -2,6 +2,7 @@ package com.example.alpha;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -39,7 +40,7 @@ public class AlphaApplication {
 					.doOnSuccess(topic ->{
 						processedList.add(topic);
 						if (processedList.size() >= all.size()) {
-							FullDetails fulldetails = new FullDetails(action,processedList);
+							FullDetails fulldetails = new FullDetails(data.getUserid(),processedList);
 							emitter.next(fulldetails);
 							emitter.complete();
 						}
@@ -48,15 +49,59 @@ public class AlphaApplication {
 				});
 			})
 			.doOnComplete(() ->{
+				//emitter.complete();
 				System.out.println("All the data are processed !!!");
 			})
 			.subscribe();
 		});
 	}
-	@PostMapping("/topic")
+	
+	@GetMapping("/info/v2")
+	public Flux<?> getData1(){
+			return followersRepository.findAll()
+			.map(data -> {
+				List<String> all = data.getTopiclist();
+				List<Alltopics> processedList = new ArrayList<Alltopics>();
+				FullDetails fulldetails[]=new FullDetails[1];
+				all.forEach(action -> {
+					topicRepository.findById(action)
+					.map(topic ->{
+						processedList.add(topic);
+							fulldetails[0] = new FullDetails(data.getUserid(),processedList);
+							return fulldetails[0];
+					})
+					.subscribe();
+				});
+				return fulldetails[0];
+				
+			})
+			.doOnComplete(() ->{
+				System.out.println("All the data are processed !!!");
+			});
+	}
+	
+
+	@PostMapping("/topics")
 	public Flux<?> loadTopic(@RequestBody Flux<Alltopics> data)
 	{
-		return topicRepository.saveAll(data);
+		return Flux.create(emitter ->{
+			data
+			.map(topic -> {
+				topic.setTopicid(null ==topic.getTopicid() || topic.getTopicid().isEmpty()?UUID.randomUUID().toString():topic.getTopicid());
+				return topic;
+			})
+			.doOnNext(topic -> {
+				topicRepository.save(topic).doOnSuccess(persistedTopic ->{
+					emitter.next(persistedTopic);
+					//emitter.complete();
+				}).subscribe();
+			})
+			.doOnComplete(() -> {
+				emitter.complete();
+				System.out.println(" all the data are processed!!!");
+			}).subscribe();
+		});
+				//topicRepository.saveAll(data);
 	}
 	
 	@PostMapping("/user")
