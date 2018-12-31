@@ -1,0 +1,96 @@
+var list = List.of("alpha","beta","gamma");
+var set = Set.of("alpha","beta","gamma");
+var map = Map.of(Map.entry("name","PrabuSubra"),Map.entry("city","Bangalore"));
+List[] list1 = new ArrayList[]{null,null};
+displayError("empty weight.")
+displayError("empty weight.")
+a instanceof Object
+a instanceof String
+a =  new String("Hello World!!!");
+a instanceof String
+a =  new Integer(2);
+for(var templist : list){ System.out.println(templist);}
+for(var i = 0;i<list.size();i++){ System.out.println(list.get(i));}
+var streams = Stream.of("alpha","Beta","Gamme","delta","Epsilon");
+var var = "Hello World!!!";
+public void var() { System.out.println("Hello world!!!");}
+var()
+Function function = (data)->data;
+Consumer consumer = (data)->{};
+Supplier supplier = ()->{return new String("Hello world!!!");};
+Runnable runnable = ()->{};
+String a = "Alpha",b="Beta",c="Gamma";
+String a = "Alpha",b="Beta",c="Gamma";
+String a = "Alpha",b="Beta",c="Gamma";
+try { } catch (Exception e){}
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+public class LocalVariable {
+    public static void main(String[] args) {
+        Person person = new Subsriber("Prabu Subra","Bangalore");
+        person = new Visitor("Prabu Subra","Bangalore");
+        new Employee<Person>(new Person("Prabu Subra","Bangalore")).printDetails();
+
+        List list = new ArrayList();
+        list = new Vector();
+    }
+}
+class Employee<T>{
+    private T t;
+    public Employee(T t){
+        this.t =t;
+    }
+    public void printDetails(){
+        System.out.println(t.toString());
+    }
+}
+class Person {
+
+    private String name;
+    private String city;
+
+    public Person(){
+
+    }
+
+    public Person(String name, String city) {
+        this.name = name;
+        this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " from "+this.city;
+    }
+}
+class Subsriber extends Person{
+
+    private String name;
+    private String city;
+
+    public Subsriber(String name, String city) {
+        this.name = name;
+        this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " from "+this.city;
+    }
+}
+class Visitor extends Person {
+
+    private String name;
+    private String city;
+
+    public Visitor(String name, String city) {
+        this.name = name;
+        this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + " from "+this.city;
+    }
+}
