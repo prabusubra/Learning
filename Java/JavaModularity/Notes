@@ -9,8 +9,8 @@ Module Declaration:-
         exports to //expose packages to list of modules only.
         opens //can access through reflection.
         opens to //can access through reflection by only specific modules.
-        uses // 
-        privides with //
+        uses // specify interface or abstract class for other modules to implement. 
+        privides with //provides implement for specific interface or abstract class.
         
         
       }
