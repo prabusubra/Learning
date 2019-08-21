@@ -15,5 +15,6 @@ Module Declaration:-
 | `uses` |  specify interface or abstract class for other modules to implement. |
 | `privides with` | provides implement for specific interface or abstract class. |
 
-
+Note:-
+- unnamed packages were not allowed in modular system.
    
