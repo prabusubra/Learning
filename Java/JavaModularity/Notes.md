@@ -1,8 +1,8 @@
 Module Declaration:-
   - file should be name as `module-info.java`.
-  - `module-info.java` keys and its usage.
-      module <modulename> {
+  - `module-info.java` keys and its usage.   
   
+ 
 | Key | usage |  
 | - | - |      
 | `require` | module dependencies.   |
@@ -14,6 +14,6 @@ Module Declaration:-
 | `opens to` | can access through reflection by only specific modules. |
 | `uses` |  specify interface or abstract class for other modules to implement. |
 | `privides with` | provides implement for specific interface or abstract class. |
-        
-      }
+
+
    
