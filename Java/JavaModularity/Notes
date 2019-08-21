@@ -2,6 +2,7 @@ Module Declaration:-
   - file should be name as module-info.java
   - module-info.java will look like
       module <modulename> {
+      
         | require |//module dependencies. |
         |  ---    |     ---
         | require static | //module required at compile time, not runtime. |
