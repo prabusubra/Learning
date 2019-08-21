@@ -1,6 +1,6 @@
 Module Declaration:-
-  - file should be name as module-info.java
-  - module-info.java will look like
+  - file should be name as `module-info.java`.
+  - `module-info.java` keys and its usage.
       module <modulename> {
   
 | Key | usage |  
