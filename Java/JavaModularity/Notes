@@ -3,7 +3,7 @@ Module Declaration:-
   - module-info.java will look like
       module <modulename> {
         | require |//module dependencies. |
-          ---         ---
+        |  ---    |     ---
         | require static | //module required at compile time, not runtime. |
         | require transitive | //exports dependencies too. |
         | exports | //expose the list of packages for public accessibility. |
