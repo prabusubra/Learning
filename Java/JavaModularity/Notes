@@ -2,9 +2,11 @@ Module Declaration:-
   - file should be name as module-info.java
   - module-info.java will look like
       module <modulename> {
+     
+      }
       
         | require | //module dependencies. |
-        |  ------ |  -------------------- |
+        |  ------ |  --------------------  |
         | require static | //module required at compile time, not runtime. |
         | require transitive | //exports dependencies too. |
         | exports | //expose the list of packages for public accessibility. |
@@ -14,5 +16,3 @@ Module Declaration:-
         | uses | // specify interface or abstract class for other modules to implement. |
         | privides with | //provides implement for specific interface or abstract class. |
         
-        
-      }
