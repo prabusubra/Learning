@@ -18,3 +18,47 @@ Module Declaration:-
 Note:-
 - unnamed packages were not allowed in modular system.
    
+Helloworld modular example:-   
+
+```
+package com.learning.alpha;
+
+public class Alpha {
+    public static void main(String[] args) {
+        System.out.println("Hello, Welcome to java modularity!!!");
+    }
+}
+
+```
+
+compile source code to bytecode:-   
+
+```
+javac -d classes com/learning/alpha/Alpha.java module-info.java
+
+```   
+
+create jar:-   
+
+```
+jar --create --file jars/modulebasics.jar --main-class com.learning.alpha.Alpha -C classes .
+
+```   
+
+run jar normaly:-   
+
+```
+
+java -jar jars/modulebasics.jar
+Hello, Welcome to java modularity!!!
+
+```
+
+run as modular jar:-   
+
+```
+
+java --module-path jars/modulebasics.jar --module com.learning.alpha    
+Hello, Welcome to java modularity!!!
+
+```
