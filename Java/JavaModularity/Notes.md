@@ -31,14 +31,14 @@ public class Alpha {
 
 ```
 
-compile source code to bytecode:-   
+compile java source code to bytecode:-   
 
 ```
 javac -d classes com/learning/alpha/Alpha.java module-info.java
 
 ```   
 
-create jar:-   
+create jar from compiled class file:-   
 
 ```
 jar --create --file jars/modulebasics.jar --main-class com.learning.alpha.Alpha -C classes .
@@ -62,3 +62,4 @@ java --module-path jars/modulebasics.jar --module com.learning.alpha
 Hello, Welcome to java modularity!!!
 
 ```
+A modular jar can run as like normal jar.
