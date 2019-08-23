@@ -5,14 +5,14 @@ Module Declaration:-
  
 | Key | usage |  
 | - | - |      
-| `require` | module dependencies.   |
-| `require static` | module required at compile time, not runtime. |
-| `require transitive` | exports dependencies too. |
+| `require` | dependencies.   |
+| `require static` | dependencies are required at compile time, not runtime. |
+| `require transitive` | exports dependencies too for users. |
 | `exports` | expose the list of packages for public accessibility. |
-| `exports to` | expose packages to list of modules only. |
+| `exports to` | expose packages to list of specific modules only. |
 | `opens` | can access through reflection. |
 | `opens to` | can access through reflection by only specific modules. |
-| `uses` |  specify interface or abstract class for other modules to implement. |
+| `uses` |  specify serives used by current module. |
 | `privides with` | provides implement for specific interface or abstract class. |
 
 Note:-
