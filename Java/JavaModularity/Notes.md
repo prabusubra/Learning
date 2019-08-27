@@ -5,9 +5,9 @@ Module Declaration:-
  
 | Key | usage |  
 | - | - |      
-| `require` | dependencies.   |
-| `require static` | dependencies are required at compile time, not runtime. |
-| `require transitive` | exports dependencies too for users. |
+| `requires` | dependencies.   |
+| `requires static` | dependencies are required at compile time, not runtime. |
+| `requires transitive` | exports dependencies too for users. |
 | `exports` | expose the list of packages for public accessibility. |
 | `exports to` | expose packages to list of specific modules only. |
 | `opens` | can access through reflection. |
