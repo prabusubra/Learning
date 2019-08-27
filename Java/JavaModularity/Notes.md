@@ -1,3 +1,5 @@
+Module - collection of encapsulated package.
+
 Module Declaration:-
   - file should be name as `module-info.java`.
   - `module-info.java` keys and its usage.   
