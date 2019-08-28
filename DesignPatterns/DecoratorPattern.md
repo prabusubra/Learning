@@ -1,0 +1,2 @@
+- Add Responsibility to objects dynamically.
+- Add functionality to an existing component from outside the class.
