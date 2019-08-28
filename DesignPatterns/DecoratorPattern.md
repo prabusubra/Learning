@@ -68,3 +68,63 @@ class ExtraMilk extends DrinksDecorator {
     }
 }
 ```
+
+JavaScript:-
+
+```
+function Tea () {
+  return {
+    cost: function (){
+      return 10;
+    }
+  }
+}
+
+function Coffee () {
+  return {
+    cost: function (){
+      return 15;
+    }
+  }
+}
+
+function Sugar (obj) {
+  return {
+    cost: function (){
+      return 2 + (obj ? obj.cost() : 0);
+    }
+  }
+}
+
+function Milk (obj) {
+  return {
+    cost: function (){
+      return 4 + (obj ? obj.cost() : 0);
+    }
+  }
+}
+
+function Ginger (obj) {
+  return {
+    cost: function (){
+      return 6 + (obj ? obj.cost() : 0);
+    }
+  }
+}
+
+function Lemon (obj) {
+  return {
+    cost: function (){
+      return 8 + (obj ? obj.cost() : 0);
+    }
+  }
+}
+
+console.log(new Tea().cost());
+console.log(new Sugar(new Tea()).cost());
+console.log(new Ginger(new Sugar(new Tea())).cost());
+console.log(new Lemon(new Sugar(new Tea())).cost());
+
+console.log(new Coffee().cost());
+console.log(new Sugar(new Coffee()).cost());
+```
