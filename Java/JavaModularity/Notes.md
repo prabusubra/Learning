@@ -1,4 +1,6 @@
-Module - collection of encapsulated package.
+Module - collection of encapsulated package.  
+
+Once an application is modularized, it can be distributed as a standalone executable with a trimmed-down version of JDK.
 
 Module Declaration:-
   - file should be name as `module-info.java`.
