@@ -1,10 +1,13 @@
 Module - collection of encapsulated package.  
+One JAR can have only one module. 
 
 Once an application is modularized, it can be distributed as a standalone executable with a trimmed-down version of JDK.
 
 - Platform Modules.
 - Application Modules.
-- Automic Modules.
+- Automic Modules.   
+    An automatic module isn’t explicit declared by us inside a (module-info.java)module descriptor. It’s automatically
+    created when placing a JAR file into the module path.
 - Unnamed Modules.
 
 Module Declaration:-
