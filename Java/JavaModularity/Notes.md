@@ -2,6 +2,11 @@ Module - collection of encapsulated package.
 
 Once an application is modularized, it can be distributed as a standalone executable with a trimmed-down version of JDK.
 
+- Platform Modules.
+- Application Modules.
+- Automic Modules.
+- Unnamed Modules.
+
 Module Declaration:-
   - file should be name as `module-info.java`.
   - `module-info.java` keys and its usage.   
