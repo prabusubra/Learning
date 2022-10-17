@@ -1,5 +1,6 @@
 1. Remove Duplicates from Sorted Array
 
+Examples:-
   Input: nums = [0,0,1,1,1,2,2,3,3,4]
   Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
   Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
@@ -23,6 +24,8 @@
 ```
 2. Move Zeroes
 
+Examples:-
+
 Input: nums = [0,1,0,3,12]
 Output: [1,3,12,0,0]
 
@@ -44,6 +47,8 @@ class Solution {
 ```
 
 3. Longest Substring Without Repeating Characters
+
+Examples:-
 
 Input: s = "abcabcbb"
 Output: 3
